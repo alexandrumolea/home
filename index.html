@@ -131,18 +131,23 @@
   .mission-deck { position: relative; width: 208px; height: 250px; transform-style: preserve-3d; animation: spinY 20s linear infinite; }
   @keyframes spinY { to { transform: rotateY(360deg); } }
   .mission-deck:hover { animation-play-state: paused; }
-  .mcard {
-    position: absolute; inset: 0; border-radius: 22px;
-    display: flex; justify-content: center; text-align: center; padding: 30px 18px;
-    border: 1px solid rgba(35,64,111,.3);
-    box-shadow: 0 30px 60px -22px rgba(35,64,111,.5);
-    backdrop-filter: blur(2px);
-  }
-  .mcard span { font-family: var(--display); font-weight: 600; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; color: var(--on-citron); }
-  /* text at 3 different heights so all are readable while rotating */
-  .mc-1 { transform: translateZ(62px);  background: linear-gradient(150deg, rgba(255,255,255,.42), rgba(255,255,255,.12)); align-items: flex-end; }    /* Rezultate — jos */
-  .mc-2 { transform: translateZ(0px);   background: linear-gradient(150deg, rgba(92,136,205,.4), rgba(92,136,205,.12)); align-items: center; }       /* Colaborare — mijloc */
-  .mc-3 { transform: translateZ(-62px); background: linear-gradient(150deg, rgba(35,64,111,.32), rgba(35,64,111,.1)); align-items: flex-start; }     /* Umanitate — sus */
+  .mcard { position: absolute; inset: 0; text-align: center; transform-style: preserve-3d; }
+  /* glass look on its own layer — backdrop-filter would otherwise flatten the 3D and break backface-visibility */
+  .mcard .glass { position: absolute; inset: 0; border-radius: 22px; border: 1px solid rgba(35,64,111,.3); box-shadow: 0 30px 60px -22px rgba(35,64,111,.5); backdrop-filter: blur(2px); }
+  /* two faces per card: back face is pre-mirrored so the label always reads correctly */
+  .mcard span { position: absolute; left: 16px; right: 16px; font-family: var(--display); font-weight: 600; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; color: var(--on-citron); backface-visibility: hidden; }
+  .mc-1 { transform: translateZ(62px); }    /* Rezultate — jos */
+  .mc-2 { transform: translateZ(0px); }     /* Colaborare — mijloc */
+  .mc-3 { transform: translateZ(-62px); }   /* Umanitate — sus */
+  .mc-1 .glass { background: linear-gradient(150deg, rgba(255,255,255,.42), rgba(255,255,255,.12)); }
+  .mc-2 .glass { background: linear-gradient(150deg, rgba(92,136,205,.4), rgba(92,136,205,.12)); }
+  .mc-3 .glass { background: linear-gradient(150deg, rgba(35,64,111,.32), rgba(35,64,111,.1)); }
+  .mc-1 span { bottom: 30px; }
+  .mc-3 span { top: 30px; }
+  .mc-2 span { top: 50%; }
+  .mc-1 .b, .mc-3 .b { transform: rotateY(180deg); }
+  .mc-2 .f { transform: translateY(-50%); }
+  .mc-2 .b { transform: translateY(-50%) rotateY(180deg); }
   @media (prefers-reduced-motion: reduce){ .mission-deck { animation: none; transform: rotateY(-24deg); } }
 
   /* ---------- MISSION (citron field) ---------- */
@@ -266,9 +271,9 @@
     </div>
     <div class="mission-scene">
       <div class="mission-deck">
-        <div class="mcard mc-1"><span>Rezultate</span></div>
-        <div class="mcard mc-2"><span>Colaborare</span></div>
-        <div class="mcard mc-3"><span>Umanitate</span></div>
+        <div class="mcard mc-1"><div class="glass"></div><span class="f">Rezultate</span><span class="b">Rezultate</span></div>
+        <div class="mcard mc-2"><div class="glass"></div><span class="f">Colaborare</span><span class="b">Colaborare</span></div>
+        <div class="mcard mc-3"><div class="glass"></div><span class="f">Umanitate</span><span class="b">Umanitate</span></div>
       </div>
     </div>
   </div>
