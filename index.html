@@ -126,16 +126,17 @@
   @media (max-width: 900px){ .portrait { margin: 40px auto 0; } }
 
   /* ---- mission mini-deck (2 overlapping layers) ---- */
-  .mini-deck { position: relative; height: 260px; width: 100%; max-width: 340px; justify-self: center; perspective: 1000px; }
-  .mini-card { position: absolute; width: 220px; height: 158px; border-radius: 22px; padding: 24px;
-    display: flex; flex-direction: column; justify-content: space-between; transform-style: preserve-3d;
+  .mini-deck { position: relative; height: 330px; width: 100%; max-width: 400px; justify-self: center; perspective: 1100px; }
+  .mini-card { position: absolute; width: 206px; height: 150px; border-radius: 22px; padding: 22px;
+    display: flex; align-items: center; justify-content: center; text-align: center; transform-style: preserve-3d;
     transition: transform .5s var(--ease); box-shadow: 0 30px 55px -24px rgba(35,64,111,.55); }
-  .mini-card .k { font-family: var(--body); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; opacity: .75; }
-  .mini-card .v { font-family: var(--display); font-size: 27px; font-weight: 600; letter-spacing: -.01em; }
-  .mc-results { top: 14px; left: 8px; background: linear-gradient(150deg, #23406F, #2E5AA7); color: var(--on-dark); transform: rotate(-7deg); }
-  .mc-humanity { bottom: 14px; right: 8px; background: linear-gradient(150deg, #FFFFFF, #F4EFE6); color: var(--on-citron); border: 1px solid rgba(35,64,111,.14); transform: rotate(6deg); }
-  .mini-deck:hover .mc-results { transform: rotate(-11deg) translate(-16px,-10px) translateZ(40px); }
-  .mini-deck:hover .mc-humanity { transform: rotate(10deg) translate(16px,10px); }
+  .mini-card .v { font-family: var(--display); font-size: 23px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
+  .mc-results  { top: 6px;  left: 4px;  background: linear-gradient(150deg, #23406F, #2E5AA7); color: var(--on-dark); transform: rotate(-8deg); z-index: 2; }
+  .mc-collab   { top: 50%; left: 50%; margin: -75px 0 0 -103px; background: linear-gradient(150deg, #FFFFFF, #F4EFE6); color: var(--on-citron); border: 1px solid rgba(35,64,111,.14); transform: rotate(-1deg); z-index: 3; box-shadow: 0 38px 62px -22px rgba(35,64,111,.6); }
+  .mc-humanity { bottom: 6px; right: 4px; background: linear-gradient(150deg, #2E5AA7, #5C88CD); color: var(--on-dark); transform: rotate(8deg); z-index: 1; }
+  .mini-deck:hover .mc-results  { transform: rotate(-12deg) translate(-24px,-16px) translateZ(50px); }
+  .mini-deck:hover .mc-collab   { transform: rotate(0deg) translate(0,0) translateZ(75px) scale(1.05); }
+  .mini-deck:hover .mc-humanity { transform: rotate(12deg) translate(24px,16px) translateZ(30px); }
 
   /* ---------- MISSION (citron field) ---------- */
   .mission { background: var(--citron); color: var(--on-citron); overflow: hidden; }
@@ -143,6 +144,7 @@
   .mission .eyebrow { color: var(--on-citron); opacity: .8; }
   .mission .sig-dot { width: 11px; height: 11px; border-radius: 50%; background: var(--on-citron); margin-bottom: 32px; }
   .mission .statement { font-family: var(--display); font-size: clamp(30px, 4.6vw, 58px); font-weight: 600; line-height: 1.12; letter-spacing: -0.02em; max-width: 20ch; position: relative; }
+  .mission .mission-lead { font-family: var(--body); font-size: clamp(16px, 1.5vw, 19px); font-weight: 400; line-height: 1.7; max-width: 46ch; margin-top: 28px; color: var(--on-citron); opacity: .9; }
   .mission .wrap { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 40px; z-index: 2; }
   @media (max-width: 820px){ .mission .wrap { grid-template-columns: 1fr; } .mini-deck { margin-top: 30px; } }
 
@@ -252,17 +254,13 @@
     <div>
       <div class="sig-dot"></div>
       <div class="eyebrow">Misiune</div>
-      <p class="statement">Aici punem o singură frază puternică — misiunea ta, la intersecția dintre rezultate și oameni.</p>
+      <p class="statement">Mă trezesc în fiecare zi să le fac bine oamenilor prin intermediul educației.</p>
+      <p class="mission-lead">Îmi place să aduc la suprafață lucruri invizibile pentru a umple goluri sau a micșora distanța dintre oameni, în așa fel încât să reușim să facem mai multe lucruri împreună, să ne facem mai puțin rău reciproc și să ne provocăm mai puțin stres.</p>
     </div>
     <div class="mini-deck">
-      <div class="mini-card mc-results">
-        <div class="k">Ce livrăm</div>
-        <div class="v">Results</div>
-      </div>
-      <div class="mini-card mc-humanity">
-        <div class="k">Cum livrăm</div>
-        <div class="v">Humanity</div>
-      </div>
+      <div class="mini-card mc-results"><div class="v">Rezultate</div></div>
+      <div class="mini-card mc-collab"><div class="v">Colaborare</div></div>
+      <div class="mini-card mc-humanity"><div class="v">Umanitate</div></div>
     </div>
   </div>
 </section>
