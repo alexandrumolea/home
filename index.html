@@ -133,15 +133,16 @@
   .mission-deck:hover { animation-play-state: paused; }
   .mcard {
     position: absolute; inset: 0; border-radius: 22px;
-    display: flex; align-items: center; justify-content: center; text-align: center;
+    display: flex; justify-content: center; text-align: center; padding: 30px 18px;
     border: 1px solid rgba(35,64,111,.3);
     box-shadow: 0 30px 60px -22px rgba(35,64,111,.5);
     backdrop-filter: blur(2px);
   }
   .mcard span { font-family: var(--display); font-weight: 600; font-size: 22px; letter-spacing: 2px; text-transform: uppercase; color: var(--on-citron); }
-  .mc-1 { transform: translateZ(62px);  background: linear-gradient(150deg, rgba(255,255,255,.42), rgba(255,255,255,.12)); }
-  .mc-2 { transform: translateZ(0px);   background: linear-gradient(150deg, rgba(92,136,205,.4), rgba(92,136,205,.12)); }
-  .mc-3 { transform: translateZ(-62px); background: linear-gradient(150deg, rgba(35,64,111,.32), rgba(35,64,111,.1)); }
+  /* text at 3 different heights so all are readable while rotating */
+  .mc-1 { transform: translateZ(62px);  background: linear-gradient(150deg, rgba(255,255,255,.42), rgba(255,255,255,.12)); align-items: flex-end; }    /* Rezultate — jos */
+  .mc-2 { transform: translateZ(0px);   background: linear-gradient(150deg, rgba(92,136,205,.4), rgba(92,136,205,.12)); align-items: center; }       /* Colaborare — mijloc */
+  .mc-3 { transform: translateZ(-62px); background: linear-gradient(150deg, rgba(35,64,111,.32), rgba(35,64,111,.1)); align-items: flex-start; }     /* Umanitate — sus */
   @media (prefers-reduced-motion: reduce){ .mission-deck { animation: none; transform: rotateY(-24deg); } }
 
   /* ---------- MISSION (citron field) ---------- */
